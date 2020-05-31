@@ -4,6 +4,8 @@ import fakeData from '../../fakeData';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
 import images from '../../images/giphy.gif'
+import { Link } from 'react-router-dom';
+import { useAuthHook } from '../LogIn/UseAuth';
 
 const Review = () => {
     const [cart,setCart] = useState([]);
@@ -34,6 +36,7 @@ const Review = () => {
    if (OrderPlace ===  true) {
        thankYou = <img src={images} alt=""/>
    }
+   const auth = useAuthHook();
     return (
         <div className="shop-container">
             <div className="products-container">
@@ -43,10 +46,19 @@ const Review = () => {
            {
               thankYou
            }
+           {
+               !cart.length && <h1 className="" >The cart is empty, <a href="/shop">go to shop</a></h1>
+           }
         </div>
         <div className="cart-container">
             <Cart cart={cart}>
-                <button  onClick = {placeOrderHandler} className="cart-button"> Place Order</button>    
+               <Link to="/shipping">
+                {  auth.user ?
+                    <button className="cart-button"> Proceed To Check Out </button>
+                    :
+                    <button className="cart-button">Log in to proceed </button>
+                }
+               </Link>    
              </Cart>
             
         </div>

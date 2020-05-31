@@ -15,10 +15,20 @@ import Review from './components/Review/Review';
 import Manage from './components/Manage/Manage';
 import NotFound from './components/NotFound/NotFound';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import LogIn from './components/LogIn/LogIn';
+
+import { AuthContextProvider, PrivateRoute } from './components/LogIn/UseAuth';
+import Shipping from './components/Shipping/Shipping';
+
+// export const ContextUser = createContext();
 
 function App() {
+  // const user = {name : 'Gudu mia',email : 'godumia@gmail.com'}
   return (
     <div >
+
+      <AuthContextProvider>
+
       <Router>
       <Header></Header>
         <Switch>
@@ -39,8 +49,13 @@ function App() {
           </Route>
           <Route path="/product/:productKey">
             <ProductDetails></ProductDetails>
-
           </Route>
+          <Route path="/login" >
+            <LogIn></LogIn>
+          </Route>
+          <PrivateRoute path="/shipping">
+            <Shipping></Shipping>
+          </PrivateRoute>
           <Route path="*">
             <NotFound></NotFound>
           </Route>
@@ -48,7 +63,7 @@ function App() {
         </Switch>
       </Router>
      
-     
+      </AuthContextProvider>
     </div>
   );
 }

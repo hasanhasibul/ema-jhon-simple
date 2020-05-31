@@ -1,9 +1,8 @@
 import React from 'react';
 
-
 const Cart = (props) => {
+    
     const cart = props.cart;
-    console.log(cart)
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
         const item = cart[i];
@@ -19,7 +18,7 @@ const Cart = (props) => {
            {
               props.children
            }
-            
+           
         </div>
     );
 };
