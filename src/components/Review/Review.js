@@ -18,7 +18,7 @@ const Review = () => {
     const saveCart =  getDatabaseCart();
     const productKeys =  Object.keys(saveCart);
     console.log(productKeys);
-        fetch('http://localhost:4200/getProductsKeys',{
+        fetch('https://stark-taiga-02598.herokuapp.com/getProductsKeys',{
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const Review = () => {
             <Cart cart={cart}>
                <Link to="/shipping">
                 {  auth.user ?
-                    <button className="cart-button"> Proceed To Check Out </button>
+                    <button className="cart-button"> Proceed Check Out </button>
                     :
                     <button className="cart-button">Log in to proceed </button>
                 }

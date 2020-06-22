@@ -27,7 +27,7 @@ const Shipping = () => {
  //TODO: samad come back after payment
  const saveCart = getDatabaseCart();
  const orderDetails = { email: auth.user.email, cart: saveCart, shipping: shipInfoAdded ,payment :payment };
- fetch('http://localhost:4200/placeOrder', {
+ fetch('https://stark-taiga-02598.herokuapp.com/placeOrder', {
    method: 'POST',
    headers: {
      'Content-Type': 'application/json'
